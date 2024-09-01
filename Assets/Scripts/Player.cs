@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
 	[SerializeField] float _speed = 10.0f;
 	[SerializeField] float _jumpSpeed = 15.0f; 
-	[SerializeField] float _gravity = 10.0f;
+	[SerializeField] float _gravity = 20.0f;
 	//[SerializeField] float _sensitivity = 5f;
 	CharacterController _controller;
 	float _horizontal, _vertical;
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			// feed moveDirection with input.
 			moveDirection = new Vector3( _horizontal , 0 , _vertical );
-			moveDirection = transform.TransformDirection( moveDirection );
+			moveDirection = transform.TransformDirection( moveDirection ).normalized;
 
 			// multiply it by speed.
 			moveDirection *= _speed;
