@@ -9,15 +9,19 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] float _jumpSpeed = 15.0f; 
 	[SerializeField] float _gravity = 20.0f;
 	//[SerializeField] float _sensitivity = 5f;
+	[SerializeField] float _rotationSpeed = 10.0f;
 	CharacterController _controller;
 	float _horizontal, _vertical;
 	float _mouseX, _mouseY;
 	bool _jump;
+	public GameObject playerBody;
+
 	
 	// use this for initialization
 	void Awake ()
 	{
 		_controller = GetComponent<CharacterController>();
+		playerBody = GameObject.Find("Player/PlayerBody");
 	}
 
 	// screen drawing update - read inputs here
@@ -39,15 +43,22 @@ public class PlayerMovement : MonoBehaviour
 		if( _controller.isGrounded )
 		{
 			// feed moveDirection with input.
-			moveDirection = new Vector3( _horizontal , 0 , _vertical );
-			moveDirection = transform.TransformDirection( moveDirection ).normalized;
+			moveDirection = new Vector3(_horizontal, 0, _vertical);
+			moveDirection = transform.TransformDirection(moveDirection);
 
 			// multiply it by speed.
+			moveDirection.Normalize(); 
 			moveDirection *= _speed;
 			
 			// jumping
 			if( _jump )
 				moveDirection.y = _jumpSpeed;
+
+			if(moveDirection != Vector3.zero)
+			{
+				Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+				playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
+			}
 		}
 		/*
 		float turner = _mouseX * _sensitivity;
