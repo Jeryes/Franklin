@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	[SerializeField] float _speed = 10.0f;
-	[SerializeField] float _jumpSpeed = 15.0f; 
-	[SerializeField] float _gravity = 20.0f;
+	//[SerializeField] float _jumpSpeed = 15.0f; 
+	//[SerializeField] float _gravity = 20.0f;
 	//[SerializeField] float _sensitivity = 5f;
 	[SerializeField] float _rotationSpeed = 10.0f;
 	CharacterController _controller;
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 		_vertical = Input.GetAxis("Vertical");
 		_mouseX = Input.GetAxis("Mouse X");
 		_mouseY = Input.GetAxis("Mouse Y");
-		_jump = Input.GetButton("Jump");
+		//_jump = Input.GetButton("Jump");
 	}
 	
 	// physics simulation update - apply physics forces here
@@ -51,9 +51,9 @@ public class PlayerMovement : MonoBehaviour
 			moveDirection *= _speed;
 			
 			// jumping
-			if( _jump )
+			/*if( _jump )
 				moveDirection.y = _jumpSpeed;
-
+			*/
 			if(moveDirection != Vector3.zero)
 			{
 				Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		*/
 		// apply gravity to the controller
-		moveDirection.y -= _gravity * Time.deltaTime;
+		//moveDirection.y -= _gravity * Time.deltaTime;
 		
 		// make the character move
 		_controller.Move( moveDirection * Time.deltaTime );
