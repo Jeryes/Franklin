@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
 	CharacterController _controller;
 	float _horizontal, _vertical;
 	float _mouseX, _mouseY;
-	bool _jump;
 	public GameObject playerBody;
 
 	
@@ -31,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
 		_vertical = Input.GetAxis("Vertical");
 		_mouseX = Input.GetAxis("Mouse X");
 		_mouseY = Input.GetAxis("Mouse Y");
-		//_jump = Input.GetButton("Jump");
 	}
 	
 	// physics simulation update - apply physics forces here
@@ -40,8 +38,8 @@ public class PlayerMovement : MonoBehaviour
 		Vector3 moveDirection = Vector3.zero;
 
 		// is the controller on the ground?
-		if( _controller.isGrounded )
-		{
+		//if( _controller.isGrounded )
+		//{
 			// feed moveDirection with input.
 			moveDirection = new Vector3(_horizontal, 0, _vertical);
 			moveDirection = transform.TransformDirection(moveDirection);
@@ -59,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 				Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 				playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
 			}
-		}
+		//}
 		/*
 		float turner = _mouseX * _sensitivity;
 		if( turner!=0 )
