@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1645259545182705267}
   - component: {fileID: 8606967704423209953}
   - component: {fileID: 4595863362653522669}
+  - component: {fileID: 6524995104059082840}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -76,8 +77,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _jumpSpeed: 15
-  _gravity: 20
   _rotationSpeed: 300
   playerBody: {fileID: 8864845334478030793}
 --- !u!114 &8606967704423209953
@@ -115,6 +114,33 @@ MonoBehaviour:
   charWil: 2
   charCon: 2
   charLck: 2
+  charEXP: 0
+  charLvl: 1
+  txt_charName: {fileID: 0}
+  txt_charHP: {fileID: 0}
+  txt_charMP: {fileID: 0}
+  txt_charStr: {fileID: 0}
+  txt_charDef: {fileID: 0}
+  txt_charInt: {fileID: 0}
+  txt_charSpd: {fileID: 0}
+  txt_charWil: {fileID: 0}
+  txt_charCon: {fileID: 0}
+  txt_charLck: {fileID: 0}
+  txt_charEXP: {fileID: 0}
+  txt_charLvl: {fileID: 0}
+--- !u!114 &6524995104059082840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3355136686741777183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f141420b193778846b5b3e1c130e6210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 292904339451693331}
 --- !u!1 &6385449332772548069
 GameObject:
   m_ObjectHideFlags: 0
