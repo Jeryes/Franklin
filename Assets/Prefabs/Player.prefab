@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6934092295701879556}
   - component: {fileID: 969083347820656009}
-  - component: {fileID: 1645259545182705267}
+  - component: {fileID: 5211472969717114382}
   - component: {fileID: 8606967704423209953}
   - component: {fileID: 4595863362653522669}
   m_Layer: 0
@@ -62,8 +62,8 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1645259545182705267
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5211472969717114382
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,13 +72,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3355136686741777183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99c9369e246b8374fa10b00d3627f59a, type: 3}
+  m_Script: {fileID: 11500000, guid: 675618d61706a5d41924d4bfafcf9456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _jumpSpeed: 15
-  _gravity: 20
-  _rotationSpeed: 300
+  speed: 5
+  rotationSpeed: 250
+  gravity: -9.81
+  jumpHeight: 1.5
   playerBody: {fileID: 8864845334478030793}
 --- !u!114 &8606967704423209953
 MonoBehaviour:
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f141420b193778846b5b3e1c130e6210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 292904339451693331}
+  InInteractZone: 0
 --- !u!114 &4595863362653522669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ Transform:
   m_GameObject: {fileID: 8864845334478030793}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

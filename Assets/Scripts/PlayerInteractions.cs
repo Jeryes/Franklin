@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
-    [SerializeField] Camera _camera;
-    bool InInteractZone;
+    //[SerializeField] Camera _camera;
+    public bool InInteractZone;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class PlayerInteractions : MonoBehaviour
         if (InInteractZone == true)
         {
             if (Input.GetKeyDown(KeyCode.E))
-            Debug.Log("Open door");
+            Debug.Log("Interaction success");
         }
         
     }
