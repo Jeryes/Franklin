@@ -13,19 +13,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;               // To track movement velocity
     private bool isGrounded;                // To check if the player is on the ground
     private CharacterController controller; // A reference for the CharacterController component
+    public GameObject playerBody;
 
-        void Awake()
+    void Awake()
     {
         controller = GetComponent<CharacterController>();
+        playerBody = GameObject.Find("Player/PlayerBody");
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        Movement();
-    }
-
-    void Movement ()
+    void FixedUpdate()
     {
         // Ground check - make sure the character is on the ground
         isGrounded = controller.isGrounded;
@@ -44,13 +41,12 @@ public class PlayerController : MonoBehaviour
         }
 
         // Apply movement
-        
         controller.Move(moveDirection * speed * Time.deltaTime);
 
         // Gravity handling
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = 0f;   // Reset Y velocity when on the ground
+            velocity.y = -2.0f;   // Reset Y velocity when on the ground
         }
 
         // Jump handling
@@ -64,8 +60,9 @@ public class PlayerController : MonoBehaviour
 
         if (moveDirection != Vector3.zero) {
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
+
         // Move the character based on velocity (gravity affects the Y-axis)
         controller.Move(velocity * Time.deltaTime);
     }
