@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         // Ground check - make sure the character is on the ground
         isGrounded = controller.isGrounded;
@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Jump handling
+       
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);  // Jump calculation
