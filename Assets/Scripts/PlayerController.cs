@@ -43,17 +43,12 @@ public class PlayerController : MonoBehaviour
         moveDirection = playerControls.Gameplay.Move.ReadValue<Vector3>();
         //Debug.Log("Move");
 
-        // Normalize vector to ensure consistent speed in all directions
-        if (moveDirection.magnitude > 1)
-        {
-            moveDirection.Normalize();
-        }
-
         // Apply movement
-        controller.Move(moveDirection * speed * Time.deltaTime);
+        controller.Move(speed * Time.deltaTime * moveDirection);
 
         // Ground check - make sure the character is on the ground
         isGrounded = controller.isGrounded;
+        //Debug.Log(isGrounded);
 
         // Gravity handling
         if (isGrounded && velocity.y < 0)
@@ -63,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
         //playerControls.Gameplay.Jump.ReadValue<float>();
         //if (playerControls.Gameplay.Jump.triggered)
+
+        //Debug.Log(playerControls.Gameplay.Jump.ReadValue<float>());
         if (playerControls.Gameplay.Jump.ReadValue<float>() == 1 && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);  // Jump calculation

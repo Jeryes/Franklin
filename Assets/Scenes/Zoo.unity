@@ -1833,6 +1833,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 969083347820656009, guid: f22ba2036cdc68c468e221cae958afac,
+        type: 3}
+      propertyPath: m_Height
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 969083347820656009, guid: f22ba2036cdc68c468e221cae958afac,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 969083347820656009, guid: f22ba2036cdc68c468e221cae958afac,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3355136686741777183, guid: f22ba2036cdc68c468e221cae958afac,
         type: 3}
       propertyPath: m_Name
@@ -1988,7 +2003,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1350246875}
 --- !u!1001 &9019481786081972021
