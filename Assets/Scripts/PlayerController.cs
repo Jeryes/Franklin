@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent( typeof(CharacterController) )]
 public class PlayerController : MonoBehaviour
 {
     // Variables
+    private PlayerControls playerControls;
+    private Vector3 moveDirection;
     public float speed = 5.0f;              // Movement speed
     public float rotationSpeed = 2.0f;      // Rotation speed
     public float gravity = -9.81f;          // Gravity acceleration
@@ -14,46 +17,53 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;                // To check if the player is on the ground
     private CharacterController controller; // A reference for the CharacterController component
     public GameObject playerBody;
+    public InputAction move;
+    public InputAction jump;
 
     void Awake()
     {
+        playerControls = new PlayerControls();
         controller = GetComponent<CharacterController>();
         playerBody = GameObject.Find("Player/PlayerBody");
+        move = InputSystem.actions.FindAction("Move");
+        jump = InputSystem.actions.FindAction("Jump");
+    }
+
+    void OnEnable() {
+        playerControls.Enable();
+    }
+
+    void OnDisable() {
+        playerControls.Disable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Ground check - make sure the character is on the ground
-        isGrounded = controller.isGrounded;
-
-        // Input handling
-        float horizontal = Input.GetAxis("Horizontal");  // Get input for left/right
-        float vertical = Input.GetAxis("Vertical");      // Get input for forward/backward
-
-        // Combine into movement vector (X and Z axis)
-        Vector3 moveDirection = new Vector3(horizontal, 0, vertical);
-        
-        // Normalize vector to ensure consistent speed in all directions
-        if (moveDirection.magnitude > 1)
-        {
-            moveDirection.Normalize();
-        }
+        moveDirection = playerControls.Gameplay.Move.ReadValue<Vector3>();
+        //Debug.Log("Move");
 
         // Apply movement
-        controller.Move(moveDirection * speed * Time.deltaTime);
+        controller.Move(speed * Time.deltaTime * moveDirection);
+
+        // Ground check - make sure the character is on the ground
+        isGrounded = controller.isGrounded;
+        //Debug.Log(isGrounded);
 
         // Gravity handling
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2.0f;   // Reset Y velocity when on the ground
+            velocity.y = -3.0f;   // Reset Y velocity when on the ground
         }
 
-        // Jump handling
-       
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        //playerControls.Gameplay.Jump.ReadValue<float>();
+        //if (playerControls.Gameplay.Jump.triggered)
+
+        //Debug.Log(playerControls.Gameplay.Jump.ReadValue<float>());
+        if (playerControls.Gameplay.Jump.ReadValue<float>() == 1 && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);  // Jump calculation
+            //Debug.Log("Jump");
         }
 
         // Apply gravity to velocity
