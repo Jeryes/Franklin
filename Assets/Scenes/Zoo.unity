@@ -1905,6 +1905,16 @@ PrefabInstance:
       propertyPath: txt_charName
       value: 
       objectReference: {fileID: 330432844}
+    - target: {fileID: 4595863362653522669, guid: f22ba2036cdc68c468e221cae958afac,
+        type: 3}
+      propertyPath: txt_charCurrHP
+      value: 
+      objectReference: {fileID: 1896460150}
+    - target: {fileID: 4595863362653522669, guid: f22ba2036cdc68c468e221cae958afac,
+        type: 3}
+      propertyPath: txt_charCurrMP
+      value: 
+      objectReference: {fileID: 1287199880}
     - target: {fileID: 5211472969717114382, guid: f22ba2036cdc68c468e221cae958afac,
         type: 3}
       propertyPath: jump
