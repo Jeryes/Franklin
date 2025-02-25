@@ -52,7 +52,6 @@ CharacterController:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -80,6 +79,24 @@ MonoBehaviour:
   gravity: -9.81
   jumpHeight: 1.5
   playerBody: {fileID: 8864845334478030793}
+  move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3e0552ea-7126-4a4b-9d30-f82feb3cb05e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  jump:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4d970ca9-dbba-4887-ae9e-7a7345fdc9b2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &8606967704423209953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,16 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da5efbe871e51f45bbf99c1773900e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charName: charName
-  charHP: 30
-  charMP: 10
-  charStr: 2
-  charDef: 2
-  charInt: 2
-  charSpd: 2
-  charWil: 2
-  charCon: 2
-  charLck: 2
+  txt_Name: {fileID: 0}
+  txt_currentHP: {fileID: 0}
+  txt_currentMP: {fileID: 0}
+  txt_maxHP: {fileID: 0}
+  txt_maxMP: {fileID: 0}
 --- !u!1 &6385449332772548069
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +323,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -417,6 +432,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
