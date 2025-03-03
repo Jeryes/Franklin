@@ -15,7 +15,7 @@ public class PlayerInteractions : MonoBehaviour
         interact = InputSystem.actions.FindAction("Interact");
     }
 
-    void Onable()
+    void OnEnable()
     {
         interact.performed += _ => Interactions();
     }
